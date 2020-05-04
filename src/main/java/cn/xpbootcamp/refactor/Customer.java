@@ -20,24 +20,24 @@ public class Customer {
         return name;
     }
     
-    private double amountFor(Rental each) {
-    	double thisAmount = 0d;
-        switch (each.getMovie().getPriceCode()) {
+    private double amountFor(Rental arental) {
+    	double result = 0d;
+        switch (arental.getMovie().getPriceCode()) {
         case Movie.HISTORY:
-            thisAmount += 2;
-            if (each.getDaysRented() > 2)
-                thisAmount += (each.getDaysRented() - 2) * 1.5;
+        	result += 2;
+            if (arental.getDaysRented() > 2)
+            	result += (arental.getDaysRented() - 2) * 1.5;
             break;
         case Movie.NEW_RELEASE:
-            thisAmount += each.getDaysRented() * 3;
+        	result += arental.getDaysRented() * 3;
             break;
         case Movie.CAMPUS:
-            thisAmount += 1.5;
-            if (each.getDaysRented() > 3)
-                thisAmount += (each.getDaysRented() - 3) * 1.5;
+        	result += 1.5;
+            if (arental.getDaysRented() > 3)
+            	result += (arental.getDaysRented() - 3) * 1.5;
             break;
         }
-        return thisAmount;
+        return result;
     	
     }
 
