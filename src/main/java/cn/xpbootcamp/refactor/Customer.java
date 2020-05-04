@@ -21,23 +21,7 @@ public class Customer {
     }
     
     private double amountFor(Rental arental) {
-    	double result = 0d;
-        switch (arental.getMovie().getPriceCode()) {
-        case Movie.HISTORY:
-        	result += 2;
-            if (arental.getDaysRented() > 2)
-            	result += (arental.getDaysRented() - 2) * 1.5;
-            break;
-        case Movie.NEW_RELEASE:
-        	result += arental.getDaysRented() * 3;
-            break;
-        case Movie.CAMPUS:
-        	result += 1.5;
-            if (arental.getDaysRented() > 3)
-            	result += (arental.getDaysRented() - 3) * 1.5;
-            break;
-        }
-        return result;
+    	return arental.getCharge();
     	
     }
 
