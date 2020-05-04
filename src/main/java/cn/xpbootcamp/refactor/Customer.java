@@ -20,22 +20,16 @@ public class Customer {
         return name;
     }
     
-    private double amountFor(Rental arental) {
-    	return arental.getCharge();
-    	
-    }
 
     String statement() {
         double totalAmount = 0d;
         int frequentRenterPoints = 0;
         Enumeration<Rental> rentals = this.rentals.elements();
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "：\n");
+       
         while (rentals.hasMoreElements()) {
             Rental each = rentals.nextElement();
             //show figures for this rental
-            //determine amounts for each line
-            double thisAmount = 0d;
-            thisAmount = amountFor(each);
            
             //add frequent renter points
             frequentRenterPoints++;
@@ -46,8 +40,8 @@ public class Customer {
             result.append("\t")
                   .append(each.getMovie().getTitle())
                   .append("\t")
-                  .append(thisAmount).append("\n");
-            totalAmount += thisAmount;
+                  .append(each.getCharge()).append("\n");
+            totalAmount += each.getCharge();
         }
         //add footer lines
         result.append("Amount owed is ").append(totalAmount).append("\n");
